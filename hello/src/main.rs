@@ -5,4 +5,5 @@ fn main() {
     let mut guess = String::new();//.expect("new string creat fail");
     io::stdin().read_line(&mut guess).expect("get a guess from stdin faild");
     println!("guess:{}",guess);
+    
 }
