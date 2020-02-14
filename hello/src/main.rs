@@ -39,11 +39,8 @@ fn main() {
     sum = 2*sum;
     println!("2*sum:{}",sum);
     /*#7 Rust中if既是一种语句又是一种表达式。*/
-    let mut _sum = if sum>0 {
-        0
-    }else{
-        sum
-    };
+    exp_ifelse(sum);
+    exp_loop();
 }
 fn operat_1(a:i32, b:i32)->i32{
     if a>0 && b>0{
@@ -52,4 +49,21 @@ fn operat_1(a:i32, b:i32)->i32{
         (b + a)//.try_into().unwrap()
     }
     
+}
+fn exp_loop(){
+    let mut counter = 0;
+    let result = loop {
+    counter += 1;
+    if counter == 10 {
+    break counter * 2;
+    }
+    };
+    println!("The result is {}", result);
+}
+fn exp_ifelse(sum:i32){
+    let mut _sum = if sum>0 {
+        0
+    }else{
+        sum
+    };
 }
