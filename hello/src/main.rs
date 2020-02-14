@@ -40,6 +40,7 @@ fn main() {
     println!("2*sum:{}",sum);
     /*#7 Rust中if既是一种语句又是一种表达式。*/
     exp_ifelse(sum);
+    /*8# 在Rust中，loop既是一种语句也是一个表达式*/
     exp_loop();
 }
 fn operat_1(a:i32, b:i32)->i32{
@@ -50,16 +51,30 @@ fn operat_1(a:i32, b:i32)->i32{
     }
     
 }
+/*该接口展示Rust循环语句的语法基础*/
 fn exp_loop(){
+    //---loop语句
     let mut counter = 0;
     let result = loop {
     counter += 1;
     if counter == 10 {
-    break counter * 2;
+        break counter * 2;
     }
     };
     println!("The result is {}", result);
+    //---while条件循环语句
+    let a = [10, 20, 30, 40, 50];
+    let mut index = 0;
+    while index < 5 {
+    println!("the value is: {}", a[index]);
+    index += 1;
+    }
+    //---for 范围循环
+    for element in a.iter() {
+        println!("the value is: {}", element);
+    }
 }
+/*该函数展示条件语句的Rust语法基础*/
 fn exp_ifelse(sum:i32){
     let mut _sum = if sum>0 {
         0
