@@ -31,6 +31,25 @@ fn main() {
             }
         }
     }
+    let a:i32=-12;
+    let b:i32 = 12;
+    println!("{}", operat_1(a,b));
+    /*#6 使用有参数和返回值的函数*/
+    let mut sum = operat_1(a, b);
+    sum = 2*sum;
+    println!("2*sum:{}",sum);
+    /*#7 Rust中if既是一种语句又是一种表达式。*/
+    let mut _sum = if sum>0 {
+        0
+    }else{
+        sum
+    };
+}
+fn operat_1(a:i32, b:i32)->i32{
+    if a>0 && b>0{
+        a+b
+    }else{
+        (b + a)//.try_into().unwrap()
+    }
     
-
 }
