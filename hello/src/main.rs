@@ -1,3 +1,4 @@
+
 use std::io::stdin;
 use std::cmp::Ordering;
 use rand::Rng;
@@ -15,6 +16,8 @@ fn main() {
     exp_ifelse(sum);
     /*8# 在Rust中，loop既是一种语句也是一个表达式*/
     exp_loop();
+    /*Pranctice*/
+    temp_converse();
 }
 /*chap 2~3
     2：rust工程创建，文件依赖，生成随机数，编写简单的命令行程序
@@ -54,6 +57,32 @@ fn rand_num_guess(){
         }
     }
 }
+/*第三章练习题：摄氏度与华氏度转换
+    对于string类型的trim使用有疑惑，不能将数字与字母分离，所以要分两行输入30C或30F
+*/
+fn temp_converse(){
+    println!("input temperature as 0C or 0F");
+    let mut temp = String::new();
+    let mut flag = String::new();
+    
+    stdin().read_line(&mut temp).expect("stdin error to get temperature");
+    stdin().read_line(&mut flag).expect("stdin error to get temperature");
+
+    let output:i32 = temp.trim().parse().expect("parse failed");
+    match flag.find('F'){
+        Some(_) => {
+            let output:f32 = ((output as f32) - 32.0)/1.8;
+            println!("result_temp:{}C",output);
+        }
+        None => {
+            let output:f32 = (output as f32)*1.8 + 32.0;
+            println!("result_temp:{}F",output);
+        }
+    }
+    
+}
+
+/*该接口演示条件表达式*/
 fn operat_1(a:i32, b:i32)->i32{
     if a>0 && b>0{
         a+b
