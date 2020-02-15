@@ -2,6 +2,28 @@ use std::io::stdin;
 use std::cmp::Ordering;
 use rand::Rng;
 fn main() {
+    /*#1-5*/
+    rand_num_guess();
+    let a:i32=-12;
+    let b:i32 = 12;
+    println!("{}", operat_1(a,b));
+    /*#6 使用有参数和返回值的函数*/
+    let mut sum = operat_1(a, b);
+    sum = 2*sum;
+    println!("2*sum:{}",sum);
+    /*#7 Rust中if既是一种语句又是一种表达式。*/
+    exp_ifelse(sum);
+    /*8# 在Rust中，loop既是一种语句也是一个表达式*/
+    exp_loop();
+}
+/*chap 2~3
+    2：rust工程创建，文件依赖，生成随机数，编写简单的命令行程序
+    3：数据类型、函数、分支语句（条件表达式）和循环语句（循环表达式）
+
+    用例参照Rust language手册第2、3章内容
+    LeonYG；2020.02
+*/
+fn rand_num_guess(){
     /*#1 生成随机数*/
     let secret_num = rand::thread_rng().gen_range(1,101);
     loop{
@@ -31,17 +53,6 @@ fn main() {
             }
         }
     }
-    let a:i32=-12;
-    let b:i32 = 12;
-    println!("{}", operat_1(a,b));
-    /*#6 使用有参数和返回值的函数*/
-    let mut sum = operat_1(a, b);
-    sum = 2*sum;
-    println!("2*sum:{}",sum);
-    /*#7 Rust中if既是一种语句又是一种表达式。*/
-    exp_ifelse(sum);
-    /*8# 在Rust中，loop既是一种语句也是一个表达式*/
-    exp_loop();
 }
 fn operat_1(a:i32, b:i32)->i32{
     if a>0 && b>0{
@@ -70,9 +81,13 @@ fn exp_loop(){
     index += 1;
     }
     //---for 范围循环
-    for element in a.iter() {
+    for element in a.iter() {//a.iter().rev() 
         println!("the value is: {}", element);
     }
+    for number in (1..4).rev() {
+        println!("{}!", number);
+    }
+        println!("LIFTOFF!!!");
 }
 /*该函数展示条件语句的Rust语法基础*/
 fn exp_ifelse(sum:i32){
@@ -82,3 +97,6 @@ fn exp_ifelse(sum:i32){
         sum
     };
 }
+
+/*chap 4
+*/
