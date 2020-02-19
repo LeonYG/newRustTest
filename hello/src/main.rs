@@ -18,11 +18,6 @@ fn main() {
     //exp_loop();
     /*Pranctice*/
     //temp_converse();
-    let  mut a = 10;
-    let  mut b = a;
-    b+=1;
-    println!("{}",a);
-    println!("{}",b);
     /*以下代码段：字符串的引用初始化以及文字初始化区别
                 如何遍历数组并且修改其中的元素？？（数组无法默认初始化，而且必须初始化）
     */
