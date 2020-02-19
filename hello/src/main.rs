@@ -4,20 +4,32 @@ use std::cmp::Ordering;
 use rand::Rng;
 fn main() {
     /*#1-5*/
-    rand_num_guess();
-    let a:i32=-12;
-    let b:i32 = 12;
-    println!("{}", operat_1(a,b));
+    //rand_num_guess();
+    //let a:i32=-12;
+    //let b:i32 = 12;
+    //println!("{}", operat_1(a,b));
     /*#6 使用有参数和返回值的函数*/
-    let mut sum = operat_1(a, b);
-    sum = 2*sum;
-    println!("2*sum:{}",sum);
+    //let mut sum = operat_1(a, b);
+    //sum = 2*sum;
+    //println!("2*sum:{}",sum);
     /*#7 Rust中if既是一种语句又是一种表达式。*/
-    exp_ifelse(sum);
+    //exp_ifelse(sum);
     /*8# 在Rust中，loop既是一种语句也是一个表达式*/
-    exp_loop();
+    //exp_loop();
     /*Pranctice*/
-    temp_converse();
+    //temp_converse();
+    let  mut a = 10;
+    let  mut b = a;
+    b+=1;
+    println!("{}",a);
+    println!("{}",b);
+    let s = String::from("hello");
+    println!("s:{}",s);
+    let (s,mid) = owner_test(s);
+    println!("s in main:{} mid in main{}",s,mid);
+    let mid2 = owner_test2(&s);
+    println!("mid2 in main:{}",mid2);
+    assert!(false);
 }
 /*chap 2~3---------------------------------------------------------------------
     2：rust工程创建，文件依赖，生成随机数，编写简单的命令行程序
@@ -26,6 +38,30 @@ fn main() {
     用例参照Rust language手册第2、3章内容
     LeonYG；2020.02
 */
+fn owner_test(s:String)->(String,usize){
+    let mid = (s.len()/2) as usize;
+    //let len = s.len();
+    let mid_str = &s[..mid];
+    println!("mid:{} str_mid{}",mid,mid_str);
+    (s,mid)
+}
+fn owner_test2(s:&String)->usize{
+    let mid = (s.len()/2) as usize;
+    //let len = s.len();
+    let mid_str = &s[..mid];
+    println!("mid:{} str_mid{}",mid,mid_str);
+    mid
+}
+/*返回第一个空格之前的字串，字符串切片类型str，切片会获得一个新的ownership*/
+fn first_word(s: &String) -> &str {
+    let bytes = s.as_bytes();
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+    &s[..]
+}
 fn rand_num_guess(){
     /*#1 生成随机数*/
     let secret_num = rand::thread_rng().gen_range(1,101);
