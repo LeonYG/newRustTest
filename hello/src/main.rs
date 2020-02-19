@@ -23,13 +23,29 @@ fn main() {
     b+=1;
     println!("{}",a);
     println!("{}",b);
+    /*以下代码段：字符串的引用初始化以及文字初始化区别
+                如何遍历数组并且修改其中的元素？？（数组无法默认初始化，而且必须初始化）
+    */
     let s = String::from("hello");
     println!("s:{}",s);
     let (s,mid) = owner_test(s);
     println!("s in main:{} mid in main{}",s,mid);
     let mid2 = owner_test2(&s);
     println!("mid2 in main:{}",mid2);
-    assert!(false);
+    //assert!(false);
+    let mut my_string_litter = String::from("hello");
+    my_string_litter.push('H');
+    let  mut arr = [0; 5];
+    //arr[0] = 0;
+    // let val = 1;
+    for &mem in arr.iter(){
+        let mem = 1;
+    }
+    println!("a len:{}",arr.len());
+    //println!("arr:{}",arr);
+    for mem in arr.iter(){
+        println!("mem:{}",mem);
+    }
 }
 /*chap 2~3---------------------------------------------------------------------
     2：rust工程创建，文件依赖，生成随机数，编写简单的命令行程序
